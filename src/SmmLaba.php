@@ -62,7 +62,7 @@ class SmmLaba
      * @param $url
      * @return object
      */
-    public function add($service, $quantity, $url)
+    public function add(string $service, int $quantity, string $url)
     {
         $response = $this->guzzle->post(null, [
             'query' => [
@@ -85,7 +85,7 @@ class SmmLaba
      * @param int $smmlaba_order_id
      * @return object
      */
-    public function checkStatus(int $smmlaba_order_id): object
+    public function checkStatus(int $smmlaba_order_id)
     {
         $response = $this->guzzle->post(null, [
             'query' => [
@@ -109,7 +109,7 @@ class SmmLaba
      * @param $response
      * @return object
      */
-    private function makeObjectFromResponse($response): object
+    private function makeObjectFromResponse($response)
     {
         return (object)json_decode($response->getBody()->getContents());
     }

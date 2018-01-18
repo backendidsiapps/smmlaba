@@ -2,6 +2,7 @@
 
 namespace Smmlaba;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
 /**

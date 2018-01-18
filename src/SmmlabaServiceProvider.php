@@ -30,8 +30,6 @@ class SmmlabaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        App::bind('SmmLaba', function () {
-            return new SmmLaba();
-        });
+        App::make(SmmLaba::class);
     }
 }

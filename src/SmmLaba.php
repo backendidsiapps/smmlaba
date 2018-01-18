@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Util;
+namespace SmmLaba;
 
 use App\Util\ServicesList;
 use Auth;

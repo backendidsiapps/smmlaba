@@ -52,6 +52,9 @@ class SmmLaba
         $this->guzzle = new Client([
             'base_uri' => $this->apiURL,
             'timeout'  => 5.0,
+            'defaults' => [
+                'verify' => false,
+            ],
         ]);
         // $this->guzzle->setDefaultOption('headers', ['Useragent' => 'Curl/Api']);
     }

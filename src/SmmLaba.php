@@ -10,6 +10,7 @@ use function config;
 
 /**
  * Class SmmLaba
+ *
  * @package App\Util
  */
 class SmmLaba
@@ -49,11 +50,13 @@ class SmmLaba
      */
     private function init()
     {
-        $this->guzzle = new Client([
-            'base_uri' => $this->apiURL,
-            'timeout'  => 5.0,
-            'verify'   => false,
-        ]);
+        $this->guzzle = new Client(
+            [
+                'base_uri' => $this->apiURL,
+                'timeout'  => 5.0,
+                'verify'   => false,
+            ]
+        );
         // $this->guzzle->setDefaultOption('headers', ['Useragent' => 'Curl/Api']);
     }
 
@@ -65,44 +68,22 @@ class SmmLaba
      */
     public function add(string $service, int $quantity, string $url)
     {
-        $response = $this->guzzle->post(null, [
-            'query' => [
-                'action'   => 'add',
-                'username' => $this->username,
-                'apikey'   => $this->apikey,
-                'service'  => $service,
-                'url'      => $url,
-                'count'    => $quantity,
-            ],
-        ]);
+        $response = $this->guzzle->post(
+            null, [
+                'query' => [
+                    'action'   => 'add',
+                    'username' => $this->username,
+                    'apikey'   => $this->apikey,
+                    'service'  => $service,
+                    'url'      => $url,
+                    'count'    => $quantity,
+                ],
+            ]
+        );
 
         $result = $this->makeObjectFromResponse($response);
 
-//        Log::info(json_encode($result));
-        return $result;
-    }
-
-    /**
-     * @param int $smmlabaOrderID
-     * @return object
-     */
-    public function checkStatus(int $smmlabaOrderID)
-    {
-        $response = $this->guzzle->post(null, [
-            'query' => [
-                'action'   => 'check',
-                'username' => $this->username,
-                'apikey'   => $this->apikey,
-                'orderid'  => $smmlabaOrderID,
-            ],
-        ]);
-
-        $result = $this->makeObjectFromResponse($response);
-
-        if ($result->error != '') {
-            Log::critical('can\'t get order info, ' . Auth::id() ?? 'no auth' . ' resp:  ' . json_encode($result));
-        }
-
+        //        Log::info(json_encode($result));
         return $result;
     }
 
@@ -115,19 +96,46 @@ class SmmLaba
         return (object)json_decode($response->getBody()->getContents());
     }
 
+    /**
+     * @param int $smmlabaOrderID
+     * @return object
+     */
+    public function checkStatus(int $smmlabaOrderID)
+    {
+        $response = $this->guzzle->post(
+            null, [
+                'query' => [
+                    'action'   => 'check',
+                    'username' => $this->username,
+                    'apikey'   => $this->apikey,
+                    'orderid'  => $smmlabaOrderID,
+                ],
+            ]
+        );
+
+        $result = $this->makeObjectFromResponse($response);
+
+        if ($result->error != '') {
+            Log::critical('can\'t get order info, ' . Auth::id() ?? 'no auth' . ' resp:  ' . json_encode($result));
+        }
+
+        return $result;
+    }
 
     /**
      * @return int
      */
     public function getBalance(): int
     {
-        $response = $this->guzzle->post(null, [
-            'query' => [
-                'action'   => 'balance',
-                'username' => $this->username,
-                'apikey'   => $this->apikey,
-            ],
-        ]);
+        $response = $this->guzzle->post(
+            null, [
+                'query' => [
+                    'action'   => 'balance',
+                    'username' => $this->username,
+                    'apikey'   => $this->apikey,
+                ],
+            ]
+        );
 
         $response = (object)json_decode($response->getBody()->getContents());
         if ($response->error != '') {

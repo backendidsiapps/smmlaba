@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 
 /**
  * Class AdminPanelServiceProvider
+ *
  * @package MulticahatServiceProvider
  */
 class SmmlabaServiceProvider extends ServiceProvider
@@ -16,13 +17,15 @@ class SmmlabaServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-//    protected $defer = true;
+    //    protected $defer = true;
 
     public function boot()
     {
-        $this->publishes([
-            __DIR__ . '/config/smmlaba.php' => config_path('smmlaba.php'),
-        ], 'config');
+        $this->publishes(
+            [
+                __DIR__ . '/config/smmlaba.php' => config_path('smmlaba.php'),
+            ], 'config'
+        );
     }
 
     /**

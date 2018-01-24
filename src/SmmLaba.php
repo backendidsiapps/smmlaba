@@ -83,17 +83,17 @@ class SmmLaba
     }
 
     /**
-     * @param int $smmlaba_order_id
+     * @param int $smmlabaOrderID
      * @return object
      */
-    public function checkStatus(int $smmlaba_order_id)
+    public function checkStatus(int $smmlabaOrderID)
     {
         $response = $this->guzzle->post(null, [
             'query' => [
                 'action'   => 'check',
                 'username' => $this->username,
                 'apikey'   => $this->apikey,
-                'orderid'  => $smmlaba_order_id,
+                'orderid'  => $smmlabaOrderID,
             ],
         ]);
 

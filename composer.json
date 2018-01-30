@@ -14,12 +14,18 @@
     }
   ],
   "require": {
-    "backendidsiapps/smmlaba": "*",
     "guzzlehttp/guzzle": "^6.3"
   },
   "autoload": {
     "psr-4": {
-      "Smmlaba\\": "src/"
+      "Backendidsiapps\\Smmlaba\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Backendidsiapps\\Smmlaba\\SmmlabaServiceProvider"
+      ]
     }
   }
 }

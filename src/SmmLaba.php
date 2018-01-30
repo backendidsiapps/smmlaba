@@ -1,8 +1,7 @@
 <?php
 
-namespace SmmLaba;
+namespace Backendidsiapps\Smmlaba;
 
-use App\Util\ServicesList;
 use Auth;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Log;
@@ -69,7 +68,8 @@ class SmmLaba
     public function add(string $service, int $quantity, string $url)
     {
         $response = $this->guzzle->post(
-            null, [
+            null,
+            [
                 'query' => [
                     'action'   => 'add',
                     'username' => $this->username,
@@ -103,7 +103,8 @@ class SmmLaba
     public function checkStatus(int $smmlabaOrderID)
     {
         $response = $this->guzzle->post(
-            null, [
+            null,
+            [
                 'query' => [
                     'action'   => 'check',
                     'username' => $this->username,
@@ -128,7 +129,8 @@ class SmmLaba
     public function getBalance(): int
     {
         $response = $this->guzzle->post(
-            null, [
+            null,
+            [
                 'query' => [
                     'action'   => 'balance',
                     'username' => $this->username,

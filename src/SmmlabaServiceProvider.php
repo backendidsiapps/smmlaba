@@ -1,6 +1,6 @@
 <?php
 
-namespace Smmlaba;
+namespace Backendidsiapps\Smmlaba;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;

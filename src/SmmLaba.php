@@ -50,7 +50,7 @@ class SmmLaba
         $this->guzzle = new Client(
             [
                 'base_uri' => $this->apiURL,
-                'timeout'  => 5.0,
+                'timeout'  => 10.0,
                 'verify'   => false,
             ]
         );

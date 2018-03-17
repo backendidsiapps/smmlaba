@@ -6,8 +6,7 @@ php artisan vendor:publish --provider="Backendidsiapps\Smmlaba\SmmlabaServicePro
 ```
 .env
 ```
-SAFECHARGE_MERCHANT_SITE_ID=
-SAFECHARGE_MERCHANT_ID=
-SAFECHARGE_SECRET_KEY=
-SAFECHARGE_URL=
+SMMLABA_URL=https://smmlaba.com/vkapi/v1/
+SMMLABA_API_KEY=
+SMMLABA_USERNAME=
 ```

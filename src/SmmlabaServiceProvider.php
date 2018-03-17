@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class AdminPanelServiceProvider
- *
- * @package MulticahatServiceProvider
+ * Class AdminPanelServiceProvider.
  */
 class SmmlabaServiceProvider extends ServiceProvider
 {
@@ -23,14 +21,11 @@ class SmmlabaServiceProvider extends ServiceProvider
     {
         $this->publishes(
             [
-                __DIR__ . '/config/smmlaba.php' => config_path('smmlaba.php'),
+                __DIR__.'/config/smmlaba.php' => config_path('smmlaba.php'),
             ], 'config'
         );
     }
 
-    /**
-     *
-     */
     public function register()
     {
         App::make(SmmLaba::class);

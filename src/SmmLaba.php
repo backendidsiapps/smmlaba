@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\Log;
 use function config;
 
 /**
- * Class SmmLaba
- *
- * @package App\Util
+ * Class SmmLaba.
  */
 class SmmLaba
 {
@@ -43,7 +41,7 @@ class SmmLaba
     }
 
     /**
-     * init guzzle client
+     * init guzzle client.
      *
      * @return void
      */
@@ -63,6 +61,7 @@ class SmmLaba
      * @param $service
      * @param $quantity
      * @param $url
+     *
      * @return object
      */
     public function add(string $service, int $quantity, string $url)
@@ -89,15 +88,17 @@ class SmmLaba
 
     /**
      * @param $response
+     *
      * @return object
      */
     private function makeObjectFromResponse($response)
     {
-        return (object)json_decode($response->getBody()->getContents());
+        return (object) json_decode($response->getBody()->getContents());
     }
 
     /**
      * @param int $smmlabaOrderID
+     *
      * @return object
      */
     public function checkStatus(int $smmlabaOrderID)
@@ -117,7 +118,7 @@ class SmmLaba
         $result = $this->makeObjectFromResponse($response);
 
         if ($result->error != '') {
-            Log::critical('can\'t get order info, ' . Auth::id() ?? 'no auth' . ' resp:  ' . json_encode($result));
+            Log::critical('can\'t get order info, '.Auth::id() ?? 'no auth'.' resp:  '.json_encode($result));
         }
 
         return $result;
@@ -139,9 +140,9 @@ class SmmLaba
             ]
         );
 
-        $response = (object)json_decode($response->getBody()->getContents());
+        $response = (object) json_decode($response->getBody()->getContents());
         if ($response->error != '') {
-            Log::critical('error on balance request: ' . $response->error);
+            Log::critical('error on balance request: '.$response->error);
 
             return -1;
         }
